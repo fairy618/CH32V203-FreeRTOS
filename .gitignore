@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# user
+cmake-build-mingw-ch32v-risc-v/*
+cmake-build-debug-mingw-ch32v-risc-v/*
