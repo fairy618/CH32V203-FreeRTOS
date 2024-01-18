@@ -121,6 +121,7 @@ include_directories(
         FreeRTOS/portable/GCC/RISC-V/chip_specific_extensions/RV32I_PFIC_no_extensions
         Debug
         Peripheral/inc
+        Hardware/LCD
 )
 
 # 宏定义
@@ -137,6 +138,11 @@ file(GLOB_RECURSE SOURCES
         "FreeRTOS/portable/GCC/RISC-V/portASM.S"
         "Peripheral/src/*.c"
         "Startup/startup_ch32v20x_D6.S"
+        "Hardware/LCD/spi.c"
+        "Hardware/LCD/lcd.c"
+        "Hardware/LCD/flash.c"
+
+
 )
 list(REMOVE_ITEM SOURCES ${CMAKE_SOURCE_DIR}/FreeRTOS/portable/Common/mpu_wrappers.c)
 
