@@ -123,10 +123,10 @@ int main(void)
 
     LCD_DrawPoint(170, 2, LCD_WHITE);
 
-    LCD_DrawLine(140, 5, 140, 50, LCD_WHITE);
-    LCD_DrawLine(140, 5, 200, 5, LCD_BLACK);
-    LCD_DrawLine(140, 50, 200, 50, LCD_BLUE);
-    LCD_DrawLine(140, 5, 200, 50, LCD_BRED);
+//    LCD_DrawLine(140, 5, 140, 50, LCD_WHITE);
+//    LCD_DrawLine(140, 5, 200, 5, LCD_BLACK);
+//    LCD_DrawLine(140, 50, 200, 50, LCD_BLUE);
+//    LCD_DrawLine(140, 5, 200, 50, LCD_BRED);
 
     LCD_Fill(200, 5, 240, 25, LCD_GRED);
     LCD_Fill(200, 25, 240, 50, LCD_GBLUE);
