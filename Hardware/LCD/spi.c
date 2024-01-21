@@ -239,7 +239,7 @@ void SPI2_Write(uint8_t data)
  * 
  * @return  none
  */
-void SPI2_Write_DMA(uint8_t *data, uint16_t len)
+void SPI2_Write_DMA(uint16_t *data, uint32_t len)
 {
     while (SPI_I2S_GetFlagStatus(SPI2, SPI_I2S_FLAG_BSY) == SET)
         ;

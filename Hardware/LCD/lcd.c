@@ -98,25 +98,6 @@ void Lcd_WriteData_16Bit(uint16_t Data)
 }
 
 /*********************************************************************
- * @fn      Lcd_WriteData_16Bit
- *
- * @brief   write two bytes to the lcd screen
- *
- * @param   Data - the data to write
- *
- * @return  none
- */
-void Lcd_WriteData_18Bit(uint32_t Data)
-{
-    LCD_CS_CLR;
-    LCD_DC_SET;
-    SPI2_Write(Data >> 16);
-    SPI2_Write(Data >> 8);
-    SPI2_Write(Data);
-    LCD_CS_SET;
-}
-
-/*********************************************************************
  * @fn      LCD_GPIOInit
  * 
  * @brief   Configuring the control gpio for the lcd screen
@@ -177,7 +158,7 @@ void LCD_RESET(void)
 void LCD_Init(void)
 {
     SPI2_Init();
-//    SPI2_DMA_Init();
+    SPI2_DMA_Init();
     LCD_GPIOInit();
     LCD_RESET();
     LCD_LED_SET;
@@ -731,5 +712,4 @@ void LCD_ShowFloatNum(uint16_t NumX, uint16_t NumY, float num, uint8_t NumLength
         LCD_ShowChar(NumX + t * FontSizeX, NumY, temp + 48, FontColor, FontSizeY);
     }
 }
-
 

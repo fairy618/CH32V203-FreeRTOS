@@ -34,6 +34,6 @@ void SPI1_Read_DMA(uint8_t *data, uint16_t len);
 void SPI2_Init(void);
 void SPI2_DMA_Init(void);
 void SPI2_Write(uint8_t data);
-void SPI2_Write_DMA(uint8_t *data, uint16_t len);
+void SPI2_Write_DMA(uint16_t *data, uint32_t len);
 
 #endif

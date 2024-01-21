@@ -20,6 +20,7 @@
 #include "task.h"
 #include "lcd.h"
 #include "lcd_img.h"
+#include "lcd_gui.h"
 
 /* Global define */
 #define TASK1_TASK_PRIO     5
@@ -117,28 +118,14 @@ int main(void)
 
     LCD_Init();
 
-    LCD_Clear(LCD_GRAY);
+    LCD_Clear(LCD_COLOR_WHITE);
 
-    LCD_ShowPicture(0, 0, 100, 100, gImage_1);
+    LCD_BUF_Fill(0,0,50,135,LCD_COLOR_RED);
 
-    LCD_DrawPoint(170, 2, LCD_WHITE);
+    LCD_GUI_Refresh();
 
-//    LCD_DrawLine(140, 5, 140, 50, LCD_WHITE);
-//    LCD_DrawLine(140, 5, 200, 5, LCD_BLACK);
-//    LCD_DrawLine(140, 50, 200, 50, LCD_BLUE);
-//    LCD_DrawLine(140, 5, 200, 50, LCD_BRED);
 
-    LCD_Fill(200, 5, 240, 25, LCD_GRED);
-    LCD_Fill(200, 25, 240, 50, LCD_GBLUE);
 
-    LCD_DrawRectangle(150, 10, 190, 40, LCD_RED);
-    LCD_DrawCircle(170, 28, 27, LCD_MAGENTA);
-
-    LCD_ShowChar(140, 60, 'A', LCD_GREEN, 24);
-
-    LCD_ShowString(0, 100, "FairyTale", LCD_CYAN, 32);
-
-    LCD_ShowIntNum(180, 60, 256, 3, LCD_YELLOW, 24);
 
     GPIO_Toggle_INIT();
     /* create two task */

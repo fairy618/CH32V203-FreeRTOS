@@ -141,8 +141,7 @@ file(GLOB_RECURSE SOURCES
         "Hardware/LCD/spi.c"
         "Hardware/LCD/lcd.c"
         "Hardware/LCD/flash.c"
-
-
+        "Hardware/LCD/lcd_gui.c"
 )
 list(REMOVE_ITEM SOURCES ${CMAKE_SOURCE_DIR}/FreeRTOS/portable/Common/mpu_wrappers.c)
 

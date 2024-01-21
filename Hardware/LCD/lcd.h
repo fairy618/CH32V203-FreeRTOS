@@ -21,20 +21,24 @@
 // [15:11] 5bit red
 //  [10:5] 6bit green
 //   [4:0] 5bit blue
-#define LCD_WHITE    0xFFFF
-#define LCD_BLACK    0x0000
-#define LCD_BLUE     0x001F
-#define LCD_BRED     0XF81F
-#define LCD_GRED     0XFFE0
-#define LCD_GBLUE    0X07FF
-#define LCD_RED      0xF800
-#define LCD_MAGENTA  0xF81F
-#define LCD_GREEN    0x07E0
-#define LCD_CYAN     0x7FFF
-#define LCD_YELLOW   0xFFE0
-#define LCD_BROWN    0XBC40
-#define LCD_BRRED    0XFC07
-#define LCD_GRAY     0X8430
+#define LCD_COLOR_WHITE    0xFFFF
+#define LCD_COLOR_BLACK    0x0000
+#define LCD_COLOR_BLUE     0x001F
+#define LCD_COLOR_BRED     0XF81F
+#define LCD_COLOR_GRED     0XFFE0
+#define LCD_COLOR_GBLUE    0X07FF
+#define LCD_COLOR_RED      0xF800
+#define LCD_COLOR_MAGENTA  0xF81F
+#define LCD_COLOR_GREEN    0x07E0
+#define LCD_COLOR_CYAN     0x7FFF
+#define LCD_COLOR_YELLOW   0xFFE0
+#define LCD_COLOR_BROWN    0XBC40
+#define LCD_COLOR_BRRED    0XFC07
+#define LCD_COLOR_GRAY     0X8430
+
+#define LCD_COLOR_FONT          LCD_COLOR_WHITE
+#define LCD_COLOR_BACKGROUND    LCD_COLOR_BLACK
+
 
 #define LCD_LED_SET  (LCD_LED_PORT->BSHR = LCD_LED_PIN)
 #define LCD_CS_SET   (LCD_CS_PORT->BSHR = LCD_CS_PIN)
