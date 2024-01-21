@@ -10,17 +10,11 @@
  * microcontroller manufactured by Nanjing Qinheng Microelectronics.
  *******************************************************************************/
 
-/*
- *@Note
- *task1 and task2 alternate printing
- */
-
 #include "debug.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "lcd.h"
-#include "lcd_img.h"
-#include "lcd_gui.h"
+#include "led.h"
 
 /* Global define */
 #define TASK1_TASK_PRIO     5
@@ -32,80 +26,30 @@
 TaskHandle_t Task1Task_Handler;
 TaskHandle_t Task2Task_Handler;
 
-extern const uint8_t gImage_1[];
-
-/*********************************************************************
- * @fn      GPIO_Toggle_INIT
- *
- * @brief   Initializes GPIOA.0/1
- *
- * @return  none
- */
-void GPIO_Toggle_INIT(void)
-{
-    GPIO_InitTypeDef GPIO_InitStructure = {0};
-
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
-    GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-}
-
-/*********************************************************************
- * @fn      task1_task
- *
- * @brief   task1 program.
- *
- * @param  *pvParameters - Parameters point of task1
- *
- * @return  none
- */
 _Noreturn void task1_task(void *pvParameters)
 {
     while(1)
     {
         printf("task1 entry\r\n");
-        GPIO_SetBits(GPIOB, GPIO_Pin_3);
-        vTaskDelay(100);
-        GPIO_ResetBits(GPIOB, GPIO_Pin_3);
+//        GPIO_SetBits(GPIOB, GPIO_Pin_3);
+//        vTaskDelay(100);
+//        GPIO_ResetBits(GPIOB, GPIO_Pin_3);
         vTaskDelay(100);
     }
 }
 
-/*********************************************************************
- * @fn      task2_task
- *
- * @brief   task2 program.
- *
- * @param  *pvParameters - Parameters point of task2
- *
- * @return  none
- */
 _Noreturn void task2_task(void *pvParameters)
 {
     while(1)
     {
         printf("task2 entry\r\n");
-        GPIO_ResetBits(GPIOA, GPIO_Pin_15);
-        vTaskDelay(100);
-        GPIO_SetBits(GPIOA, GPIO_Pin_15);
+//        GPIO_ResetBits(GPIOA, GPIO_Pin_15);
+//        vTaskDelay(100);
+//        GPIO_SetBits(GPIOA, GPIO_Pin_15);
         vTaskDelay(100);
     }
 }
 
-/*********************************************************************
- * @fn      main
- *
- * @brief   Main program.
- *
- * @return  none
- */
 int main(void)
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
@@ -115,19 +59,14 @@ int main(void)
     printf("SystemClk:%ld\r\n", SystemCoreClock);
     printf("ChipID:%08lx\r\n", DBGMCU_GetCHIPID());
     printf("FreeRTOS Kernel Version:%s\r\n", tskKERNEL_VERSION_NUMBER);
-
+    Power_Ctrl_Init();
     LCD_Init();
 
-    LCD_Clear(LCD_COLOR_WHITE);
+    LCD_Clear(LCD_COLOR_BLACK);
 
-    LCD_BUF_Fill(0,0,50,135,LCD_COLOR_RED);
+    LED_Init();
+    BEEP_Init();
 
-    LCD_GUI_Refresh();
-
-
-
-
-    GPIO_Toggle_INIT();
     /* create two task */
     xTaskCreate((TaskFunction_t) task2_task,
                 (const char *) "task2",

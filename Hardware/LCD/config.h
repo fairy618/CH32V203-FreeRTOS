@@ -40,11 +40,6 @@
 #define SPI_FAST_MODE     2
 #define SPI_SPEED_MODE    SPI_NORMAL_MODE
 
-/* SPI FLASH and LCD_SCREEN GPIO Definition */
-#define FLASH_CS_PORT     GPIOB
-#define FLASH_CS_RCC      RCC_APB2Periph_GPIOB
-#define FLASH_CS_PIN      (GPIO_Pin_2)
-
 #define LCD_LED_RCC       RCC_APB2Periph_GPIOB
 #define LCD_LED_PORT      GPIOB
 #define LCD_LED_PIN       (GPIO_Pin_6)

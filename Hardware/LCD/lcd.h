@@ -15,7 +15,6 @@
 #include "spi.h"
 #include "stdio.h"
 #include "stdlib.h"
-#include "flash.h"
 #include "config.h"
 
 // [15:11] 5bit red

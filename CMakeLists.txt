@@ -122,6 +122,8 @@ include_directories(
         Debug
         Peripheral/inc
         Hardware/LCD
+        Hardware/ADC
+        Hardware/LED
 )
 
 # 宏定义
@@ -140,8 +142,8 @@ file(GLOB_RECURSE SOURCES
         "Startup/startup_ch32v20x_D6.S"
         "Hardware/LCD/spi.c"
         "Hardware/LCD/lcd.c"
-        "Hardware/LCD/flash.c"
-        "Hardware/LCD/lcd_gui.c"
+        "Hardware/ADC/adc.c"
+        "Hardware/LED/led.c"
 )
 list(REMOVE_ITEM SOURCES ${CMAKE_SOURCE_DIR}/FreeRTOS/portable/Common/mpu_wrappers.c)
 
