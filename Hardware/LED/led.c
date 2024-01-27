@@ -75,10 +75,6 @@ void Key_Init(void)
 
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1 | GPIO_Pin_10 | GPIO_Pin_11;
     GPIO_Init(GPIOB, &GPIO_InitStructure);
-
-
-    R32_EXTI_FTENR
-
 }
 
 

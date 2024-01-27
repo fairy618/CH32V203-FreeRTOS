@@ -52,6 +52,7 @@ _Noreturn void task2_task(void *pvParameters)
 
 int main(void)
 {
+    int i;
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     SystemCoreClockUpdate();
     Delay_Init();
@@ -59,13 +60,22 @@ int main(void)
     printf("SystemClk:%ld\r\n", SystemCoreClock);
     printf("ChipID:%08lx\r\n", DBGMCU_GetCHIPID());
     printf("FreeRTOS Kernel Version:%s\r\n", tskKERNEL_VERSION_NUMBER);
+
     Power_Ctrl_Init();
     LCD_Init();
 
-    LCD_Clear(LCD_COLOR_BLACK);
+    LCD_Clear(LCD_COLOR_BACKGROUND);
 
     LED_Init();
     BEEP_Init();
+
+    LCD_DrawLine(10, 0, 10, 135, LCD_COLOR_FONT);// clear next point
+
+    for(i = 0; i < 240*10; i++)
+    {
+        LCD_DrawWave(i % 50);
+    }
+
 
     /* create two task */
     xTaskCreate((TaskFunction_t) task2_task,

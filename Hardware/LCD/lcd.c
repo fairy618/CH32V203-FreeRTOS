@@ -713,3 +713,41 @@ void LCD_ShowFloatNum(uint16_t NumX, uint16_t NumY, float num, uint8_t NumLength
     }
 }
 
+void LCD_DrawWave(int RawValue)
+{
+    static uint8_t Flag_FirstDraw = 1;
+    static uint16_t LastX, LastY;
+    uint16_t CurrentX, CurrentY;
+
+    CurrentY = LCD_WAVE_CENTRE - RawValue;
+
+    if(Flag_FirstDraw)
+    {
+        Flag_FirstDraw = 0;
+        CurrentX = 0;
+        LCD_DrawPoint(CurrentX, CurrentY, LCD_COLOR_FONT);
+    }
+    else
+    {
+        CurrentX = LastX + 1;
+        if(CurrentX < (LCD_H - 1))
+        {
+            LCD_DrawLine(CurrentX + 1, 0, CurrentX + 1, 135, LCD_COLOR_BACKGROUND);
+            LCD_DrawLine(LastX, LastY, CurrentX, CurrentY, LCD_COLOR_FONT);
+
+        }
+        else if(CurrentX == (LCD_H - 1))
+        {
+            LCD_DrawLine(0, 0, 0, 135, LCD_COLOR_BACKGROUND);
+            LCD_DrawLine(LastX, LastY, CurrentX, CurrentY, LCD_COLOR_FONT);
+        }
+        else
+        {
+            CurrentX = 0;
+            LCD_DrawLine(CurrentX + 1, 0, CurrentX + 1, 135, LCD_COLOR_BACKGROUND);
+            LCD_DrawPoint(CurrentX, CurrentY, LCD_COLOR_FONT);
+        }
+    }
+    LastX = CurrentX;
+    LastY = CurrentY;
+}

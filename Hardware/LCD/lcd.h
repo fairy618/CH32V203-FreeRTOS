@@ -38,6 +38,7 @@
 #define LCD_COLOR_FONT          LCD_COLOR_WHITE
 #define LCD_COLOR_BACKGROUND    LCD_COLOR_BLACK
 
+#define LCD_WAVE_CENTRE (67)
 
 #define LCD_LED_SET  (LCD_LED_PORT->BSHR = LCD_LED_PIN)
 #define LCD_CS_SET   (LCD_CS_PORT->BSHR = LCD_CS_PIN)
@@ -69,5 +70,7 @@ void LCD_ShowIntNum(uint16_t NumX, uint16_t NumY, uint16_t Num, uint8_t NumLengt
 void LCD_ShowFloatNum(uint16_t NumX, uint16_t NumY, float num, uint8_t NumLength, uint16_t FontColor, uint8_t FontSizeY);
 
 void LCD_ShowPicture(uint16_t PictureX, uint16_t PictureY, uint16_t PictureLength, uint16_t PictureWidth, const uint8_t Picture[]);
+
+void LCD_DrawWave(int RawValue);
 
 #endif
